@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda ModullApp</title>
+    <!-- Aquí llamaremos a nuestro CSS más adelante -->
+</head>
+<body>
+
+    <!-- Encabezado de la tienda -->
+    <header>
+        <h1 id="store-name">Cargando tienda...</h1>
+    </header>
+
+    <!-- Aquí se mostrarán los productos dinámicamente -->
+    <main>
+        <div id="productos-container">
+            <!-- El JavaScript pondrá los productos aquí automáticamente -->
+        </div>
+    </main>
+
+    <!-- Botón flotante de WhatsApp (por ahora un texto, luego le damos estilo) -->
+    <a id="whatsapp-btn" href="#" target="_blank">Hacer pedido por WhatsApp</a>
+
+    <!-- 1. Cargamos el cerebro (config.js) -->
+    <script src="js/config.js"></script>
+    
+    <!-- 2. Cargamos la conexión a Firebase (como módulo) -->
+    <script type="module" src="js/firebase.js"></script>
+    
+    <!-- 3. Cargamos el motor de la tienda (lo crearemos en el siguiente paso) -->
+    <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
