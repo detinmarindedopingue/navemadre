@@ -20,19 +20,19 @@ const APP_CONFIG = {
         ZELLE: ""
     },
     
-    // Configuración de ImgBB (Para subir fotos)
+    // Configuración de ImgBB
     IMGBB: {
         API_KEY: "d73dba3f7a512ecf796baf3b2ba0e2e9"
     },
     
-    // Configuración de Firebase
+    // Configuración de Firebase (Tus llaves reales)
     FIREBASE: {
-        API_KEY: "",
-        AUTH_DOMAIN: "",
-        DATABASE_URL: "",
-        PROJECT_ID: "",
-        STORAGE_BUCKET: "",
-        MESSAGING_SENDER_ID: "",
-        APP_ID: ""
+        API_KEY: "AIzaSyCQxBJ3_6tNhtITgTvO4uPePlEiWMjkWxQ",
+        AUTH_DOMAIN: "navemadre-db.firebaseapp.com",
+        DATABASE_URL: "https://navemadre-db-default-rtdb.firebaseio.com",
+        PROJECT_ID: "navemadre-db",
+        STORAGE_BUCKET: "navemadre-db.firebasestorage.app",
+        MESSAGING_SENDER_ID: "763371078686",
+        APP_ID: "1:763371078686:web:f95bf5bda4cbad76541a0f"
     }
 };
