@@ -1,23 +1,48 @@
-// app.js - Motor de la tienda
-document.addEventListener('DOMContentLoaded', () => {
+// 1. Importamos el tubo de conexión (la inicialización de Firebase) 
+// que ya configuraste en firebase.js. Asumimos que firebase.js exporta 'db'.
+import { db } from './firebase.js'; 
+
+// 2. Importamos las herramientas específicas de Firebase v10 para leer datos.
+import { ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+// 3. Definimos el contenedor del HTML donde irán los productos.
+const productContainer = document.getElementById('product-container');
+
+// 4. Apuntamos a la ruta exacta en el árbol de Firebase. 
+// Usamos la misma ruta del JSON que acabas de importar.
+const productsRef = ref(db, 'stores/navemadre-demo/products');
+
+// 5. onValue es un "oyente". Se queda vigilando esa ruta. 
+// Si cambias un precio en Firebase, esto se dispara solo y actualiza la web. Magia en tiempo real.
+onValue(productsRef, (snapshot) => {
     
-    // 1. Ponemos el nombre de la tienda en el título
-    const storeNameElement = document.getElementById('store-name');
-    if (storeNameElement && APP_CONFIG.STORE_NAME) {
-        storeNameElement.innerText = APP_CONFIG.STORE_NAME;
+    // Limpiamos el contenedor por si acaso
+    productContainer.innerHTML = ''; 
+
+    // Preguntamos si Firebase devolvió datos
+    if (snapshot.exists()) {
+        const products = snapshot.val(); // Convierte el árbol de Firebase en un objeto de JavaScript
+        
+        // Iteramos sobre cada producto (prod_001, prod_002, etc.)
+        for (const productId in products) {
+            const product = products[productId]; // Extraemos los detalles (name, price, etc.)
+
+            // Creamos el esqueleto HTML de la tarjeta del producto
+            const card = `
+                <div class="product-card" style="border: 1px solid #ccc; padding: 15px; margin: 10px; border-radius: 8px;">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <strong>$${product.price}</strong>
+                    <br><br>
+                    <button>Comprar</button>
+                </div>
+            `;
+            
+            // Inyectamos la tarjeta creada dentro del contenedor del HTML
+            productContainer.innerHTML += card;
+        }
+    } else {
+        // Si no hay datos o el cliente los borró todos, muestra esto
+        productContainer.innerHTML = '<p>No hay productos disponibles.</p>';
     }
-
-    // 2. Configuramos el botón de WhatsApp con el número del config.js
-    const whatsappBtn = document.getElementById('whatsapp-btn');
-    if (whatsappBtn && APP_CONFIG.WHATSAPP) {
-        const phone = APP_CONFIG.WHATSAPP.PHONE_NUMBER;
-        const message = encodeURIComponent(APP_CONFIG.WHATSAPP.DEFAULT_MESSAGE);
-        whatsappBtn.href = `https://wa.me/${phone}?text=${message}`;
-    }
-
-    // 3. Aquí es donde en el próximo paso conectaremos a Firebase 
-    // para traer los productos y dibujarlos en pantalla.
-    const productosContainer = document.getElementById('productos-container');
-    productosContainer.innerHTML = `<p style="text-align: center; margin-top: 50px;">Nave Madre lista. Conecta tu Firebase para ver los productos aquí.</p>`;
-
 });
