@@ -1,6 +1,6 @@
 // 1. La palabra "export" es OBLIGATORIA para que firebase.js pueda leer esto
 export const firebaseConfig = {
-    apiKey: "TU_API_KEY_REAL",
+    apiKey: "AIzaSyCQxBJ3_6tNhtITgTvO4uPePlEiWMjkWxQ",
     authDomain: "navemadre-db.firebaseapp.com",
     databaseURL: "https://navemadre-db-default-rtdb.firebaseio.com",
     projectId: "navemadre-db",
