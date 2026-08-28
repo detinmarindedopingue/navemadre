@@ -1,5 +1,5 @@
 // config.js - El cerebro de la Nave Madre
-const APP_CONFIG = {
+export const APP_CONFIG = {
     // Identificador único de la tienda
     STORE_ID: "navemadre-demo", 
     
@@ -35,4 +35,15 @@ const APP_CONFIG = {
         MESSAGING_SENDER_ID: "763371078686",
         APP_ID: "1:763371078686:web:f95bf5bda4cbad76541a0f"
     }
+};
+
+// 2. Puente para que firebase.js pueda leer las llaves fácilmente
+export const firebaseConfig = {
+    apiKey: APP_CONFIG.FIREBASE.API_KEY,
+    authDomain: APP_CONFIG.FIREBASE.AUTH_DOMAIN,
+    databaseURL: APP_CONFIG.FIREBASE.DATABASE_URL,
+    projectId: APP_CONFIG.FIREBASE.PROJECT_ID,
+    storageBucket: APP_CONFIG.FIREBASE.STORAGE_BUCKET,
+    messagingSenderId: APP_CONFIG.FIREBASE.MESSAGING_SENDER_ID,
+    appId: APP_CONFIG.FIREBASE.APP_ID
 };
