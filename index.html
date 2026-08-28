@@ -6,8 +6,6 @@
     <title>Tienda ModullApp</title>
     <!-- Aquí llamaremos a nuestro CSS más adelante -->
 </head>
-    <div id="product-container"></div>
-    <script type="module" src="./js/app.js"></script>
 <body>
 
     <!-- Encabezado de la tienda -->
@@ -17,27 +15,15 @@
 
     <!-- Aquí se mostrarán los productos dinámicamente -->
     <main>
-        <div id="productos-container">
-            <!-- El JavaScript pondrá los productos aquí automáticamente -->
-        </div>
+        <!-- El motor app.js inyectará las tarjetas aquí dentro -->
+        <div id="product-container"></div>
     </main>
 
     <!-- Botón flotante de WhatsApp (por ahora un texto, luego le damos estilo) -->
     <a id="whatsapp-btn" href="#" target="_blank">Hacer pedido por WhatsApp</a>
 
-    <!-- 1. Cargamos el cerebro (config.js) -->
-    <script src="js/config.js"></script>
-    
-    <!-- 2. Cargamos la conexión a Firebase (como módulo) -->
-    <script type="module" src="js/firebase.js"></script>
-      
-    <!-- Contenedor de productos generados dinámicamente -->
-    <div id="product-container"></div>
-
-    <!-- 3. Cargamos el motor de la tienda (lo crearemos en el siguiente paso) -->
+    <!-- ÚNICA etiqueta de script. El motor se encarga de traer a config.js y firebase.js -->
     <script type="module" src="./js/app.js"></script>
-
-    
 
 </body>
 </html>
